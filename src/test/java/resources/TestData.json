@@ -1,0 +1,9 @@
+{
+  "loginTestcase": [
+    { "username": "admin", "password": "PkwX51@VaD" }
+  ],
+  "applyLeave": [
+    { "username": "admin", "password": "PkwX51@VaD", "leaveOption": "Sick Leave - US", "fromMonthValue": "October", 
+    "fromDateValue": "23", "toMonthValue": "October", "toDateValue" : "24", "partialDaySelection" : "Start Day Only", "leaveComment" : "Adding comments for Leave"}
+  ]
+}

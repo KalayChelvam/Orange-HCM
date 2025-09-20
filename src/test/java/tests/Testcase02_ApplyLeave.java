@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.HashMap;
+
 import org.testng.annotations.Test;
 
 import base.BaseTestCases;
@@ -8,28 +10,28 @@ import pages.LoginPage;
 
 public class Testcase02_ApplyLeave extends BaseTestCases{
 	
-	@Test
-	public void applyLeave() {
+	@Test(dataProvider = "getData")
+	public void applyLeave(HashMap<String, String> input) {
 		
 		LoginPage login = new LoginPage(driver);
-		login.enterUsername()
-		.enterPassword()
+		login.enterUsername(input.get("username"))
+		.enterPassword(input.get("password"))
 		.loginSubmitButton();
 		LeavePage applyLeave = new LeavePage(driver);
 		applyLeave.clickOnLeftMenuLeave()
 		.clickOnTopMenuApplyLeave()
-		.selectTheLeaveTypeGoingToApply()
+		.selectTheLeaveTypeGoingToApply(input.get("leaveOption"))
 		.clickOnFromDateCalendarIcon()
 		.clickOnFromMonthInsideCalendar()
-		.selectFromMonthToApplyLeave()
-		.selectFromDateToApplyLeave()
+		.selectFromMonthToApplyLeave(input.get("fromMonthValue"))
+		.selectFromDateToApplyLeave(input.get("fromDateValue"))
 		.clickOnToDateCalendarIcon()
 		.clickOnToMonthInsideCalendar()
-		.selectToMonthToApplyLeave()
-		.selectToDateToApplyLeave()
-		.selectPartialDaysAny()
+		.selectToMonthToApplyLeave(input.get("toMonthValue"))
+		.selectToDateToApplyLeave(input.get("toDateValue"))
+		.selectPartialDaysAny(input.get("partialDaySelection"))
 		.selectLeaveStartDay()
-		.addCommentForLeave()
+		.addCommentForLeave(input.get("leaveComment"))
 		.leaveSubmit();
 		
 	}

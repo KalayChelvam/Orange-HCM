@@ -6,7 +6,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import components.AbstractComp;
-import utils.ConfigReader;
 
 public class LoginPage extends AbstractComp{
 	
@@ -22,18 +21,18 @@ public class LoginPage extends AbstractComp{
 	WebElement userName;
 	
 	@FindBy(id = "txtPassword")
-	WebElement password;
+	WebElement passWord;
 	
 	@FindBy(xpath = "//button[@type='submit']")
 	WebElement loginSubmit;
 	
-	public LoginPage enterUsername() {
-		userName.sendKeys(ConfigReader.getProperty("username"));
+	public LoginPage enterUsername(String username) {
+		userName.sendKeys(username);
 		return this;
 	}
 	
-	public LoginPage enterPassword() {
-		password.sendKeys(ConfigReader.getProperty("password"));
+	public LoginPage enterPassword(String password) {
+		passWord.sendKeys(password);
 		return this;
 	}
 	

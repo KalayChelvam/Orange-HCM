@@ -73,12 +73,12 @@ public class LeavePage extends AbstractComp{
 		return this;
 	}
 	
-	public LeavePage selectTheLeaveTypeGoingToApply() {
+	public LeavePage selectTheLeaveTypeGoingToApply(String leaveOption) {
 		
 		List<WebElement> listOfLeaveType = waitUntilVisibleAllElementsByLocator(leaveType);
 		for(WebElement leaveTypeGoingToApply : listOfLeaveType) {
 			String leaveTypeText = leaveTypeGoingToApply.getText().trim();
-			if(leaveTypeText.equals("Sick Leave - US")) {
+			if(leaveTypeText.equals(leaveOption)) {
 				leaveTypeGoingToApply.click();
 				break;
 			}
@@ -97,24 +97,24 @@ public class LeavePage extends AbstractComp{
 		return this;
 	}
 	
-	public LeavePage selectFromMonthToApplyLeave() {
+	public LeavePage selectFromMonthToApplyLeave(String fromMonthValue) {
 		
 		List<WebElement> fromMonths = waitUntilVisibleAllElementsByLocator(fromMonthSelection);
 		for(WebElement fromMonth : fromMonths) {
 			String selectFromMonthToApplyLeave = fromMonth.getText().trim();
-			if(selectFromMonthToApplyLeave.equals("October")) {
+			if(selectFromMonthToApplyLeave.equals(fromMonthValue)) {
 				fromMonth.click();
 				break;
 			}
 		} return this;
 	}
 	
-	public LeavePage selectFromDateToApplyLeave() {
+	public LeavePage selectFromDateToApplyLeave(String fromDateValue) {
 		
 		List<WebElement> listOfFromDate = waitUntilVisibleAllElementsByLocator(fromDateSelection);
 		for(WebElement fromDate : listOfFromDate) {
 			String selectFromDate = fromDate.getText().trim();
-			if(selectFromDate.equals("23")) {
+			if(selectFromDate.equals(fromDateValue)) {
 				fromDate.click();
 				break;
 			}
@@ -133,36 +133,36 @@ public class LeavePage extends AbstractComp{
 		return this;
 	}
 	
-	public LeavePage selectToMonthToApplyLeave() {
+	public LeavePage selectToMonthToApplyLeave(String toMonthValue) {
 		
 		List<WebElement> toMonths = waitUntilVisibleAllElementsByLocator(toMonthSelection);
 		for(WebElement toMonth : toMonths) {
 			String selectMonthToApplyLeave = toMonth.getText().trim();
-			if(selectMonthToApplyLeave.equals("October")) {
+			if(selectMonthToApplyLeave.equals(toMonthValue)) {
 				toMonth.click();
 				break;
 			}
 		} return this;
 	}
 	
-	public LeavePage selectToDateToApplyLeave() {
+	public LeavePage selectToDateToApplyLeave(String toDateValue) {
 		
 		List<WebElement> listOfToDate = waitUntilVisibleAllElementsByLocator(toDateSelection);
 		for(WebElement toDate : listOfToDate) {
 			String selectToDate = toDate.getText().trim();
-			if(selectToDate.equals("24")) {
+			if(selectToDate.equals(toDateValue)) {
 				toDate.click();
 				break;
 			}
 		} return this;
 	}
 	
-	public LeavePage selectPartialDaysAny() {
+	public LeavePage selectPartialDaysAny(String partialDaySelection) {
 		
 		List<WebElement> ifPartialDays = waitUntilVisibleAllElementsByLocator(partialDays);
 		for(WebElement selectPartialDay : ifPartialDays) {
 			String getTextOfPartialDay = selectPartialDay.getText().trim();
-			if(getTextOfPartialDay.equals("Start Day Only")) {
+			if(getTextOfPartialDay.equals(partialDaySelection)) {
 				selectPartialDay.click();
 				break;
 			}
@@ -176,9 +176,9 @@ public class LeavePage extends AbstractComp{
 		return this;
 	}
 	
-	public LeavePage addCommentForLeave() {
+	public LeavePage addCommentForLeave(String leaveComment) {
 		
-		addComments.sendKeys("Adding Comments on the leave applying");
+		addComments.sendKeys(leaveComment);
 		return this;
 	}
 
