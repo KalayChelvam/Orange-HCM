@@ -1,5 +1,6 @@
 package base;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.time.Duration;
@@ -7,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -20,7 +24,7 @@ import utils.DataReader;
 
 public class BaseTestCases {
 	
-	public WebDriver driver;
+	public static WebDriver driver;
 	String browser;
 	String url;
 	
@@ -61,9 +65,7 @@ public class BaseTestCases {
 	public Object[][] getData(Method method) throws IOException {
 		
 		String filePath = System.getProperty("user.dir")+"//src//test//java//resources//TestData.json";
-		
 		Map<String, List<HashMap<String, String>>> allData = DataReader.readJson(filePath);
-		
 		String testName = method.getName();
 		List<HashMap<String, String>> testData = allData.get(testName);
 		
@@ -72,6 +74,16 @@ public class BaseTestCases {
 			data[i][0] = testData.get(i);
 		}
 		return data;
+	}
+	
+	public static String getScreenShots(String testname) throws IOException {
+		
+		TakesScreenshot ts = (TakesScreenshot)driver;
+		File source = ts.getScreenshotAs(OutputType.FILE);
+		String filePath = System.getProperty("user.dir")+"//screenshot//"+testname+".png";
+		File destination = new File(filePath);
+		FileUtils.copyFile(source, destination);
+		return filePath;
 	}
 
 
