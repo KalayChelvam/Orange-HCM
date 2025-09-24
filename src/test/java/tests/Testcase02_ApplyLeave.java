@@ -33,7 +33,6 @@ public class Testcase02_ApplyLeave extends BaseTestCases{
 		.selectLeaveStartDay()
 		.addCommentForLeave(input.get("leaveComment"))
 		.leaveSubmit();
-		
 	}
 
 
