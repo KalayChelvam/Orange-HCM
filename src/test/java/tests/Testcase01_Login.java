@@ -9,7 +9,7 @@ import pages.LoginPage;
 
 public class Testcase01_Login extends BaseTestCases{
 	
-	@Test(dataProvider = "getData", enabled = false)
+	@Test(dataProvider = "getData")
 	public void loginTestcase(HashMap<String, String> input){
 				
 		LoginPage login = new LoginPage(driver);
