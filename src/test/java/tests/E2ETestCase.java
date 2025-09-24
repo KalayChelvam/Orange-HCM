@@ -18,7 +18,6 @@ public class E2ETestCase extends BaseTestCases {
 	
 	@Test
 	public void endToEndTestcase(){
-		
 
 		driver.findElement(By.id("txtUsername")).sendKeys(ConfigReader.getProperty("username"));
 		driver.findElement(By.id("txtPassword")).sendKeys(ConfigReader.getProperty("password"));
