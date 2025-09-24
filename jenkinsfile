@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    tools{
+        maven 'mvn3.9.11'
+    }
+    parameters{
+        choice(name : 'ENVIRONMENT', choices : ['Testing', 'Stage', 'Prod'], description : 'environment name')
+    }
+    stages {
+        stage('Git Clone') {
+            steps {
+                // Checkout code from GitHub
+                git branch: 'main', url: 'https://github.com/KalayChelvam/Orange-HCM.git'
+            }
+        }
+
+    stage('List Directory') {
+            steps {
+                // List files in workspace
+                bat 'dir'
+            }
+        }
+        
+    stage('maven test') {
+                        when{
+                    expression{
+                        params.ENVIRONMENT == 'Testing'
+                    }
+                }
+            steps {
+                // run the test cases using maven command
+                bat 'mvn test'
+            }
+        }
+        
+    stage('maven build') {
+            steps {
+                // run the test cases using maven command
+                bat 'mvn clean install -DskipTests=true'
+            }
+        }
+    }
+}
