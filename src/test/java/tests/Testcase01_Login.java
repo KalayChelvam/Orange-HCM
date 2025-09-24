@@ -17,9 +17,7 @@ public class Testcase01_Login extends BaseTestCases{
 		System.out.println(input.get("password"));
 		login.enterUsername(input.get("username"))
 		.enterPassword(input.get("password"))
-		.loginSubmitButton();
-		
-		
+		.loginSubmitButton();		
 	}
 
 }
